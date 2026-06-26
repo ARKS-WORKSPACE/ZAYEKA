@@ -1,0 +1,420 @@
+/* Global CSS and Design System - Minimalist Editorial Light Theme */
+
+:root {
+  /* Color Palette - Creme, Terracotta & Gold Theme */
+  --bg-primary: #fcf9f4;       /* Luxury Ivory Cream */
+  --bg-secondary: #f4eae0;     /* Warm Sand */
+  --bg-tertiary: #ebdccf;      /* Rich Soft Beige/Clay */
+  --accent-navy: #b85c46;      /* Burnt Terracotta Red (Primary Accent) */
+  --accent-navy-hover: #9c432f;/* Deep Terracotta Red */
+  --accent-navy-rgb: 184, 92, 70;
+  --accent-gold: #c5a059;      /* Warm Brassy Gold (Secondary Accent) */
+  --text-primary: #23180f;     /* Deep Dark Chocolate for elegant readability */
+  --text-secondary: #534235;   /* Warm Charcoal Brown for body copy */
+  --text-muted: #8c7665;       /* Soft Clay Grey-Brown */
+  --border-color: rgba(184, 92, 70, 0.15); /* Terracotta-tinted fine borders */
+  --border-color-active: rgba(184, 92, 70, 0.35);
+  --glass-bg: rgba(252, 249, 244, 0.88);    /* Ivory Cream Glass */
+  --glass-border: rgba(197, 160, 89, 0.12);  /* Gold-tinted glass border */
+  --glass-border-hover: rgba(197, 160, 89, 0.28);
+  --shadow-navy: rgba(35, 24, 15, 0.05);     /* Soft, warm shadows */
+  
+  /* Typography - Oswald (Headings) & Space Mono (Body/Details) */
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Space Mono', monospace;
+  
+  /* Transitions */
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-navy) var(--bg-secondary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-navy);
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-navy-hover);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  letter-spacing: -0.2px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  color: inherit;
+  outline: none;
+}
+
+/* Reusable UI Components */
+
+/* Minimalist Editorial Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 2.2rem;
+  border: 1.5px solid var(--accent-navy);
+  border-radius: 0px; /* Sharp corners for editorial style */
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--accent-navy);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: var(--transition-medium);
+}
+
+.btn-primary:hover {
+  color: var(--accent-navy);
+  background: transparent;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 2.2rem;
+  border: 1.5px solid var(--text-primary);
+  border-radius: 0px;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition-medium);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-navy);
+  background: var(--accent-navy);
+  color: #ffffff;
+}
+
+/* Clean Editorial Text Links (from user image) */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  border-bottom: 1.5px solid var(--accent-navy);
+  padding-bottom: 3px;
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.text-link:hover {
+  color: var(--accent-navy);
+  border-bottom-color: var(--accent-navy-hover);
+  padding-bottom: 5px;
+}
+
+/* Glass Panels - reimagined for light theme */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 0px; /* Editorial style uses sharp boxes */
+  transition: var(--transition-medium);
+}
+
+.glass-panel:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 8px 30px var(--shadow-navy);
+}
+
+/* Layout Utilities */
+.section {
+  padding: 7rem 2rem;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4.5rem 1rem;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+.section-subtitle {
+  color: var(--accent-navy);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--accent-navy);
+  margin: 0.75rem auto 0 auto;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Micro-animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Fine-line Accent Hover */
+.glow-gold-hover:hover {
+  border-color: var(--accent-navy);
+  box-shadow: 0 8px 24px var(--shadow-navy);
+}
+
+/* Forms Styling */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0px;
+  color: var(--text-primary);
+  transition: var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--accent-navy);
+  background: var(--bg-primary);
+  box-shadow: 0 0 8px rgba(26, 43, 76, 0.08);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+select.form-control option {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* CSS Grid Columns */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ==========================================================================
+   Zayeka Reusable Dynamic QR Code Component Styles
+   ========================================================================== */
+.zayeka-qr-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-secondary);
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
+/* In the Event RSVP page, the pass-qr-wrapper uses flex to layout things side-by-side on desktop */
+.pass-qr-wrapper .zayeka-qr-wrapper {
+  margin: 0; /* Align left in the row layout on desktop */
+}
+
+.qr-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  padding: 0.5rem;
+  border: 1px solid rgba(184, 92, 70, 0.1);
+  box-shadow: 0 4px 12px rgba(35, 24, 15, 0.04);
+}
+
+.qr-canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.qr-error-message {
+  color: var(--accent-navy);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Premium Minimalist Editorial Download Button */
+.qr-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  width: 100%;
+}
+
+.qr-download-btn:hover:not(:disabled) {
+  background: var(--accent-navy);
+  color: #ffffff;
+  border-color: var(--accent-navy);
+  box-shadow: 0 4px 10px rgba(184, 92, 70, 0.15);
+}
+
+.qr-download-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Success download state */
+.qr-download-btn.downloaded {
+  background: #4a7c59; /* Elegant muted green for success */
+  color: #ffffff;
+  border-color: #4a7c59;
+}
+
+/* Reset any external styles that might affect lucide icon svgs inside our QR wrapper */
+.zayeka-qr-wrapper svg {
+  border: none !important;
+  padding: 0 !important;
+  background: none !important;
+  display: inline-block !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.ticket-footer .ticket-qr-desc {
+  margin-top: 0.75rem;
+}

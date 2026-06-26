@@ -1,0 +1,348 @@
+.footer-section {
+  background-color: var(--bg-tertiary);
+  border-top: 1.5px solid var(--accent-navy);
+  padding: 6rem 2rem 2rem 2rem;
+  position: relative;
+  color: var(--text-secondary);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.1fr 1fr;
+  gap: 3.5rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-col-title {
+  font-size: 1.15rem;
+  margin-bottom: 1.75rem;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.footer-col-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 1.5px;
+  background: var(--accent-navy);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo-icon {
+  color: var(--accent-navy);
+}
+
+.footer-about-text {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  font-weight: 400;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-navy);
+  transition: var(--transition-fast);
+}
+
+.social-icon:hover {
+  border-color: var(--accent-navy-hover);
+  background: var(--bg-secondary);
+  color: var(--accent-navy-hover);
+  box-shadow: 0 0 10px var(--border-color-active);
+}
+
+/* Dynamic Open Status Badge in Deep Navy Footer */
+.status-badge {
+  padding: 0.85rem 1.25rem;
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-badge.open .status-dot {
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+}
+
+.status-badge.closed .status-dot {
+  background: #fbbf24;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.8);
+}
+
+.status-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: block;
+}
+
+.status-badge.open .status-text {
+  color: #10b981;
+}
+
+.status-badge.closed .status-text {
+  color: #fbbf24;
+}
+
+.status-subtext {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.hours-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.hours-list li:last-child {
+  border-bottom: none;
+}
+
+.hours-list li .day {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.hours-list li .time {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Newsletter Col */
+.newsletter-text {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.newsletter-form {
+  width: 100%;
+}
+
+.newsletter-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.mail-icon {
+  position: absolute;
+  left: 15px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.newsletter-input {
+  padding: 0.8rem 3.5rem 0.8rem 2.8rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 0px;
+  width: 100%;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  transition: var(--transition-fast);
+}
+
+.newsletter-input:focus {
+  border-color: var(--accent-navy);
+  background: var(--bg-primary);
+}
+
+.newsletter-input::placeholder {
+  color: var(--text-muted);
+}
+
+.newsletter-submit-btn {
+  position: absolute;
+  right: 5px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent-navy);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.newsletter-submit-btn:hover {
+  background: var(--accent-navy-hover);
+  transform: scale(1.05);
+}
+
+.newsletter-success {
+  padding: 0.85rem 1.25rem;
+  border-radius: 0px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1.5px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.newsletter-success .success-icon {
+  flex-shrink: 0;
+}
+
+/* Contact Col */
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: 0.8rem;
+}
+
+.contact-list li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.contact-icon {
+  color: var(--accent-navy);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.contact-list li span {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  border-top: 1.5px solid var(--border-color);
+  padding-top: 2rem;
+  margin-top: 5rem;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.bottom-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.bottom-links a {
+  transition: var(--transition-fast);
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.bottom-links a:hover {
+  color: var(--accent-navy);
+}
+
+/* Responsive Footer */
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 4rem 1.5rem 2rem 1.5rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .footer-col-title {
+    margin-bottom: 1.25rem;
+  }
+  
+  .footer-bottom {
+    margin-top: 3.5rem;
+  }
+  
+  .bottom-container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .bottom-links {
+    justify-content: center;
+    width: 100%;
+  }
+}

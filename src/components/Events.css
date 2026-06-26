@@ -1,0 +1,184 @@
+.events-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+.event-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 0px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+}
+
+.event-img-wrapper {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.event-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-slow);
+}
+
+.event-card:hover .event-img-wrapper img {
+  transform: scale(1.03);
+}
+
+.event-category-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--accent-navy);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 0px;
+  box-shadow: 0 4px 10px var(--shadow-navy);
+}
+
+.event-content {
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.event-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.event-card:hover .event-title {
+  color: var(--accent-navy);
+}
+
+.event-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.meta-icon {
+  color: var(--accent-navy);
+  flex-shrink: 0;
+}
+
+.event-description {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+  font-weight: 400;
+}
+
+.event-btn-action {
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* RSVP Modal styling extensions */
+.rsvp-modal {
+  max-width: 700px;
+}
+
+.rsvp-form-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-subtitle {
+  color: var(--accent-navy);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.event-summary-badge {
+  padding: 1rem 1.5rem;
+  border-radius: 0px;
+  font-size: 0.8rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.badge-icon {
+  color: var(--accent-navy);
+}
+
+/* Success details in RSVP */
+.rsvp-success-wrapper {
+  padding: 2rem 1rem;
+}
+
+.next-steps-card {
+  max-width: 520px;
+  margin: 2.5rem auto;
+  padding: 1.5rem 2rem;
+  border-radius: 0px;
+  border-left: 3px solid var(--accent-navy);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.next-steps-card .card-icon {
+  color: var(--accent-navy);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.next-steps-card h4 {
+  font-size: 0.95rem;
+  color: var(--accent-navy);
+  margin-bottom: 0.5rem;
+}
+
+.next-steps-card p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .event-card {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+}
