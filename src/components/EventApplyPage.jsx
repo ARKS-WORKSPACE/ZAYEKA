@@ -81,6 +81,55 @@ export default function EventApplyPage({ event, onClose }) {
       for (let i = 0; i < 6; i++) {
         ref += chars.charAt(Math.floor(Math.random() * chars.length));
       }
+
+      // Save Event RSVP to localStorage and cloud database for desk dashboard
+      const newEventRsvp = {
+        ref,
+        eventId: activeEvent.id,
+        eventTitle: activeEvent.title,
+        eventDate: activeEvent.date,
+        eventTime: activeEvent.time,
+        price: activeEvent.price,
+        name: rsvpForm.name.trim(),
+        email: rsvpForm.email.trim(),
+        phone: rsvpForm.phone.trim(),
+        guests: parseInt(rsvpForm.guests || '1'),
+        requirements: rsvpForm.requirements || '',
+        status: 'Confirmed',
+        createdAt: new Date().toISOString()
+      };
+
+      const syncEventRsvp = async () => {
+        // Save locally first
+        let existing = [];
+        try {
+          existing = JSON.parse(localStorage.getItem('zayeka_event_rsvps') || '[]');
+        } catch (err) {}
+        existing.push(newEventRsvp);
+        localStorage.setItem('zayeka_event_rsvps', JSON.stringify(existing));
+
+        // Sync with remote DB
+        try {
+          const res = await fetch('https://api.npoint.io/3addc354adb3deef04d2');
+          let remoteList = [];
+          if (res.status === 200) {
+            remoteList = await res.json();
+            if (!Array.isArray(remoteList)) remoteList = [];
+          }
+          if (!remoteList.some(ev => ev.ref === newEventRsvp.ref)) {
+            remoteList.push(newEventRsvp);
+          }
+          await fetch('https://api.npoint.io/3addc354adb3deef04d2', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(remoteList)
+          });
+        } catch (err) {
+          console.error('Failed to sync event RSVP with remote database:', err);
+        }
+      };
+
+      syncEventRsvp();
       setPassRef(ref);
       setIsSubmitted(true);
     }

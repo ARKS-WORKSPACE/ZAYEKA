@@ -154,6 +154,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Zayeka. All Rights Reserved. Crafted for elite gastronomers.
           </p>
           <div className="bottom-links">
+            <a href="./desk/index.html" target="_blank" rel="noopener noreferrer">Desk Console</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
             <a href="#" onClick={handleScrollToTop}>Back to Top</a>

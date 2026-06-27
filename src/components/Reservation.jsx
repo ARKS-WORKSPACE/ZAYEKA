@@ -150,6 +150,60 @@ export default function Reservation({ selectedDishes = {} }) {
       for (let i = 0; i < 6; i++) {
         ref += chars.charAt(Math.floor(Math.random() * chars.length));
       }
+
+      // Fetch table specifications
+      const tableInfo = TABLES.find(t => t.id === bookingData.tableId);
+      
+      // Save reservation to local storage and remote DB for the desk dashboard
+      const newReservation = {
+        ref,
+        date: bookingData.date,
+        time: bookingData.time,
+        guests: bookingData.guests,
+        tableId: bookingData.tableId,
+        tableName: tableInfo ? tableInfo.name : `Table ${bookingData.tableId}`,
+        tableType: tableInfo ? tableInfo.type : 'Standard',
+        name: bookingData.name.trim(),
+        email: bookingData.email.trim(),
+        phone: bookingData.phone.trim(),
+        occasion: bookingData.occasion || '',
+        specialRequests: bookingData.specialRequests || '',
+        dishes: selectedDishes,
+        status: 'Confirmed',
+        createdAt: new Date().toISOString()
+      };
+
+      const syncBooking = async () => {
+        // Save locally first for instant availability
+        let existing = [];
+        try {
+          existing = JSON.parse(localStorage.getItem('zayeka_reservations') || '[]');
+        } catch (err) {}
+        existing.push(newReservation);
+        localStorage.setItem('zayeka_reservations', JSON.stringify(existing));
+
+        // Asynchronously sync with the cloud database
+        try {
+          const res = await fetch('https://api.npoint.io/96777d9f150a95155d45');
+          let remoteList = [];
+          if (res.status === 200) {
+            remoteList = await res.json();
+            if (!Array.isArray(remoteList)) remoteList = [];
+          }
+          if (!remoteList.some(r => r.ref === newReservation.ref)) {
+            remoteList.push(newReservation);
+          }
+          await fetch('https://api.npoint.io/96777d9f150a95155d45', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(remoteList)
+          });
+        } catch (err) {
+          console.error('Failed to sync reservation with cloud database:', err);
+        }
+      };
+
+      syncBooking();
       setBookingRef(ref);
       setStep(4);
     }
