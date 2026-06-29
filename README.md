@@ -1,4 +1,4 @@
-# Zayeka | Premium Fine Dining & Indian Fusion Cuisine
+# Zayeka | Fine Dining & Indian Fusion Cuisine
 
 ![Zayeka Premium Fine Dining](preview.png)
 
