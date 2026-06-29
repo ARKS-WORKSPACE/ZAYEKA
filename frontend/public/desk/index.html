@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zayeka | Restaurant Desk Console</title>
+  <!-- Google Fonts: Oswald (Headings) & Space Mono (Body/Details) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="desk-container">
+    <!-- Header -->
+    <header class="desk-header">
+      <div class="header-logo-section">
+        <!-- Minimalist vector SVG logo matching main site -->
+        <svg class="brand-flame" viewBox="0 0 160 160" width="36" height="36">
+          <path d="M80,90 C101.5,90 117,74 117,54 C117,35.5 104.5,26 89,4 C84,15.5 75.5,23.5 67.5,35 C55,53 43,61 43,72.5 C43,82.2 58.5,90 80,90 Z" fill="#b85c46" />
+          <path d="M76,88 C67,79 61,66 61,52 C61,42 66,34 71,29 C64,36 56,46 56,59 C56,72 65,82 76,88 Z" fill="#ffffff" />
+          <path d="M82,89 C80,74 77,58 81,43 C83,36 87,30 91,25 C85,32 80,44 80,60 C80,72 82,83 82,89 Z" fill="#ffffff" />
+          <path d="M88,87 C96,78 104,65 103,51 C103,42 98,35 93,30 C99,37 107,47 107,59 C107,72 97,81 88,87 Z" fill="#ffffff" />
+        </svg>
+        <div class="header-brand-title">
+          <h1>ZAYEKA</h1>
+          <span>RESTAURANT DESK CONSOLE</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-scan-sim" class="btn-desk-secondary">
+          <i data-lucide="qr-code"></i> Ticket Lookup
+        </button>
+        <button id="btn-new-walkin" class="btn-desk-primary">
+          <i data-lucide="plus"></i> Walk-In / Call Book
+        </button>
+        <a href="../" class="btn-back-site">
+          <i data-lucide="arrow-left-right"></i> Guest View
+        </a>
+      </div>
+    </header>
+
+    <!-- Stats Banner -->
+    <section class="desk-stats-grid">
+      <div class="stat-card glass-panel">
+        <div class="stat-icon-wrapper"><i data-lucide="calendar-check"></i></div>
+        <div class="stat-info">
+          <span class="stat-value" id="stat-total-bookings">0</span>
+          <span class="stat-label">Total Reservations</span>
+        </div>
+      </div>
+      <div class="stat-card glass-panel">
+        <div class="stat-icon-wrapper"><i data-lucide="users"></i></div>
+        <div class="stat-info">
+          <span class="stat-value" id="stat-total-guests">0</span>
+          <span class="stat-label">Total Guests</span>
+        </div>
+      </div>
+      <div class="stat-card glass-panel">
+        <div class="stat-icon-wrapper"><i data-lucide="hourglass"></i></div>
+        <div class="stat-info">
+          <span class="stat-value" id="stat-today-bookings">0</span>
+          <span class="stat-label">Today's Table Bookings</span>
+        </div>
+      </div>
+      <div class="stat-card glass-panel">
+        <div class="stat-icon-wrapper"><i data-lucide="ticket"></i></div>
+        <div class="stat-info">
+          <span class="stat-value" id="stat-event-rsvps">0</span>
+          <span class="stat-label">Event RSVPs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls Pane -->
+    <section class="desk-controls-pane glass-panel">
+      <div class="controls-search">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" id="input-search" placeholder="Search by name, reference code, or phone...">
+      </div>
+      <div class="controls-filters">
+        <div class="filter-group">
+          <label for="select-status">Status</label>
+          <select id="select-status" class="filter-select">
+            <option value="ALL">All Statuses</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Checked In">Checked In</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="select-sort">Sort By</label>
+          <select id="select-sort" class="filter-select">
+            <option value="date-asc">Date & Time (Earliest First)</option>
+            <option value="date-desc">Date & Time (Latest First)</option>
+            <option value="guests-desc">Guest Count (High to Low)</option>
+            <option value="guests-asc">Guest Count (Low to High)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="desk-main-content">
+      <!-- Tabs Navigation -->
+      <div class="desk-tabs">
+        <button class="tab-btn active" data-tab="tables">
+          <i data-lucide="table"></i> Table Reservations
+        </button>
+        <button class="tab-btn" data-tab="events">
+          <i data-lucide="ticket"></i> Event Registrations
+        </button>
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="tab-panel active" id="panel-tables">
+        <div class="table-responsive glass-panel">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Guest</th>
+                <th>Contact</th>
+                <th>Date & Time</th>
+                <th>Guests</th>
+                <th>Assigned Table</th>
+                <th>Occasion / Wishes</th>
+                <th>Selected Tastings</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-tables">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+          <div class="empty-state" id="empty-tables" style="display: none;">
+            <i data-lucide="inbox"></i>
+            <p>No table reservations found matching the filters.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="panel-events">
+        <div class="table-responsive glass-panel">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Guest</th>
+                <th>Contact</th>
+                <th>Event Title</th>
+                <th>Event Date & Time</th>
+                <th>Guests</th>
+                <th>Ticket Price</th>
+                <th>Dietary / Requirements</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-events">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+          <div class="empty-state" id="empty-events" style="display: none;">
+            <i data-lucide="inbox"></i>
+            <p>No event RSVPs found matching the filters.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal: Walk-in Booking -->
+    <div class="modal-backdrop" id="modal-walkin">
+      <div class="modal-card animate-fade-in-up">
+        <div class="modal-header">
+          <h2>Create Walk-in or Call Reservation</h2>
+          <button class="modal-close-btn" id="close-modal-walkin"><i data-lucide="x"></i></button>
+        </div>
+        <form id="form-walkin">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="modal-label">Guest Full Name *</label>
+              <input type="text" id="walkin-name" required class="modal-input" placeholder="e.g. Aayush Shah">
+            </div>
+            <div class="form-group">
+              <label class="modal-label">Phone Number *</label>
+              <input type="tel" id="walkin-phone" required class="modal-input" placeholder="e.g. +91 9876543210">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="modal-label">Email Address *</label>
+              <input type="email" id="walkin-email" required class="modal-input" placeholder="e.g. guest@domain.com">
+            </div>
+            <div class="form-group">
+              <label class="modal-label">Dining Date *</label>
+              <input type="date" id="walkin-date" required class="modal-input">
+            </div>
+          </div>
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label class="modal-label">Time Slot *</label>
+              <select id="walkin-time" required class="modal-input">
+                <option value="">Select Time</option>
+                <option value="5:00 PM">5:00 PM</option>
+                <option value="5:30 PM">5:30 PM</option>
+                <option value="6:00 PM">6:00 PM</option>
+                <option value="6:30 PM">6:30 PM</option>
+                <option value="7:00 PM">7:00 PM</option>
+                <option value="7:30 PM">7:30 PM</option>
+                <option value="8:00 PM">8:00 PM</option>
+                <option value="8:30 PM">8:30 PM</option>
+                <option value="9:00 PM">9:00 PM</option>
+                <option value="9:30 PM">9:30 PM</option>
+                <option value="10:00 PM">10:00 PM</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="modal-label">Guest Count *</label>
+              <select id="walkin-guests" required class="modal-input">
+                <option value="1">1 Guest</option>
+                <option value="2" selected>2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6">6 Guests</option>
+                <option value="7">7 Guests</option>
+                <option value="8">8 Guests</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="modal-label">Assign Table *</label>
+              <select id="walkin-table" required class="modal-input">
+                <!-- Dynamically populated or updated based on capacity -->
+              </select>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="modal-label">Occasion</label>
+              <select id="walkin-occasion" class="modal-input">
+                <option value="">No Special Occasion</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Business Dinner">Business Dinner</option>
+                <option value="Date Night">Date Night</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="modal-label">Staff Notes / Special Requests</label>
+              <input type="text" id="walkin-requests" class="modal-input" placeholder="e.g., wheelchair access, allergic to nuts">
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn-desk-secondary" id="btn-cancel-walkin">Cancel</button>
+            <button type="submit" class="btn-desk-primary">Confirm Booking</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal: QR Code Ticket Lookup -->
+    <div class="modal-backdrop" id="modal-scan">
+      <div class="modal-card animate-fade-in-up" style="max-width: 500px;">
+        <div class="modal-header">
+          <h2>Ticket & Receipt Lookup</h2>
+          <button class="modal-close-btn" id="close-modal-scan"><i data-lucide="x"></i></button>
+        </div>
+        <div class="scan-lookup-box">
+          <p class="lookup-instruction">Enter the guest reservation code or paste the URL parameters generated by the client's confirmation QR code below:</p>
+          <div class="lookup-input-wrapper">
+            <input type="text" id="input-lookup-code" placeholder="e.g. ZYK-A1B2C3 or full URL...">
+            <button id="btn-do-lookup" class="btn-desk-primary">Search</button>
+          </div>
+          <div id="lookup-error" class="lookup-error-msg" style="display: none;"></div>
+        </div>
+
+        <div id="lookup-result-card" class="digital-ticket-preview" style="display: none;">
+          <!-- Dynamically populated visual ticket summary -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
