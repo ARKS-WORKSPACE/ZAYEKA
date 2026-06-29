@@ -1,6 +1,6 @@
 # Zayeka | Fine Dining & Indian Fusion Cuisine
 
-![Zayeka Premium Fine Dining](preview.png)
+![Zayeka Fine Dining]
 
 Zayeka is a high-end, premium MERN stack web application designed for a luxury Indian-European fusion restaurant. It features a stunning customer-facing landing page, an interactive table booking wizard, invitational event RSVPs, and a digital receipt system. It also includes a dedicated **Reception Desk Console** for restaurant hosts to manage reservations and event admissions in real-time.
 
